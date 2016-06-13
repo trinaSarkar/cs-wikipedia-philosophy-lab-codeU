@@ -45,7 +45,7 @@ public class WikiPhilosophy {
 
         // the following throws an exception so the test fails
         // until you update the code
-        String msg = "Complete this lab by adding your code and removing this statement.";
-        throw new UnsupportedOperationException(msg);
+        /**String msg = "Complete this lab by adding your code and removing this statement.";
+        throw new UnsupportedOperationException(msg);**/
 	}
 }

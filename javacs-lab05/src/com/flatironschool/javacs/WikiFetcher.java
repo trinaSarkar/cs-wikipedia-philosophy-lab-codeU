@@ -16,6 +16,11 @@ public class WikiFetcher {
 	private long lastRequestTime = -1;
 	private long minInterval = 1000;
 
+
+	public Elements returnParas(Document doc) {
+		Element content = doc.getElementById("mw-content-text");
+		return content.select("p");
+	}
 	/**
 	 * Fetches and parses a URL string, returning a list of paragraph elements.
 	 *
@@ -31,11 +36,11 @@ public class WikiFetcher {
 		Document doc = conn.get();
 
 		// select the content text and pull out the paragraphs.
-		Element content = doc.getElementById("mw-content-text");
-
+		//Element content = doc.getElementById("mw-content-text");
+		return returnParas(doc);
 		// TODO: avoid selecting paragraphs from sidebars and boxouts
-		Elements paras = content.select("p");
-		return paras;
+		/**Elements paras = content.select("p");
+		return paras;**/
 	}
 
 	/**
@@ -57,9 +62,7 @@ public class WikiFetcher {
 		Document doc = Jsoup.parse(stream, "UTF-8", filename);
 
 		// TODO: factor out the following repeated code
-		Element content = doc.getElementById("mw-content-text");
-		Elements paras = content.select("p");
-		return paras;
+		return returnParas(doc);
 	}
 
 	/**
